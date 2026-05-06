@@ -12,7 +12,7 @@ This project solves the **Travelling Salesman Problem (TSP)** using a **Genetic 
 ## Compile & Run
 
 ```bash
-g++ tsp_ga.cpp -o tsp
+g++ MemeticAlgorithm.cpp -o tsp
 ./tsp
 ```
 
