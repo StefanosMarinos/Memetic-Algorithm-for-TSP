@@ -24,5 +24,5 @@ g++ MemeticAlgorithm.cpp -o tsp
 - Changeable popsize, generations, elitesize, rng probability for more percise rsults in cost of time!
 
 ## Notes
-- Optimized for larger instances (`n > 10`)
+- Optimized for larger instances (`n > 10`), it can be changed though
 - Suggests exact methods for small instances
