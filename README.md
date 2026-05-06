@@ -20,7 +20,7 @@ g++ MemeticAlgorithm.cpp -o tsp
 - Number of cities
 - Symmetric distance matrix
 
-## 
+## Flexibility
 - Changeable popsize, generations, elitesize, rng probability for more percise rsults in cost of time!
 
 ## Notes
