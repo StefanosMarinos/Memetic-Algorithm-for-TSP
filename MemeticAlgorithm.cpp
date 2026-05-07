@@ -121,10 +121,9 @@ int main() {
 
         random_device rd;
         mt19937 rng(rd());
-        // Ορίζουμε ένα εύρος τιμών για τις τυχαίες αποστάσεις, π.χ. 1-100
+
         uniform_int_distribution<int> uni(1, 100);
 
-        // Γέμισμα πίνακα
         for (int i = 0; i < n; i++) {
             for (int j = i; j < n; j++) {
                 if (i == j) {
@@ -138,12 +137,12 @@ int main() {
                         cout << "Distance " << i + 1 << " -> " << j + 1 << ": ";
                         cin >> dist[i][j];
                     }
-                    dist[j][i] = dist[i][j]; // Συμμετρικότητα
+                    dist[j][i] = dist[i][j];
                 }
             }
         }
 
-        // Εκτύπωση πίνακα για επιβεβαίωση (προαιρετικό)
+        // 
         if (choice == 'y' || choice == 'Y') {
             cout << "\nGenerated Distance Matrix:\n";
             for (int i = 0; i < n; i++) {
