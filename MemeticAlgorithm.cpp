@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <random>
 #include <numeric>
+#include <climits>
 
 using namespace std;
 
@@ -111,25 +112,47 @@ int main() {
     int n;
     cout << "Enter number of cities: ";
     cin >> n;
-    if (n > 10) { // For larger instances, use GA; for smaller, suggest exact methods
 
+    if (n > 10) {
         vector<vector<int>> dist(n, vector<int>(n));
+        char choice;
+        cout << "Do you want to generate random distances? (y/n): ";
+        cin >> choice;
 
-        // Read symmetric distance matrix
+        random_device rd;
+        mt19937 rng(rd());
+        // Ορίζουμε ένα εύρος τιμών για τις τυχαίες αποστάσεις, π.χ. 1-100
+        uniform_int_distribution<int> uni(1, 100);
+
+        // Γέμισμα πίνακα
         for (int i = 0; i < n; i++) {
             for (int j = i; j < n; j++) {
-
-                if (i == j) dist[i][j] = 0;
+                if (i == j) {
+                    dist[i][j] = 0;
+                }
                 else {
-                    cout << "Distance " << i + 1 << " -> " << j + 1 << ": ";
-                    cin >> dist[i][j];
-                    dist[j][i] = dist[i][j];
+                    if (choice == 'y' || choice == 'Y') {
+                        dist[i][j] = uni(rng);
+                    }
+                    else {
+                        cout << "Distance " << i + 1 << " -> " << j + 1 << ": ";
+                        cin >> dist[i][j];
+                    }
+                    dist[j][i] = dist[i][j]; // Συμμετρικότητα
                 }
             }
         }
 
-        random_device rd;
-        mt19937 rng(rd()); // Random number generator for reproducibility
+        // Εκτύπωση πίνακα για επιβεβαίωση (προαιρετικό)
+        if (choice == 'y' || choice == 'Y') {
+            cout << "\nGenerated Distance Matrix:\n";
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    cout << dist[i][j] << "\t";
+                }
+                cout << endl;
+            }
+        }
 
         int popSize = 100; // Population size, can be tuned based on problem size
 
